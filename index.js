@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import morgan from "morgan";
 import userRouter from "./routes/user.js"
+import tourRouter from "./routes/tour.js"
 
 const app=express()
 app.use(morgan("dev"))
@@ -14,6 +15,8 @@ app.get("/",(req,res)=>{
     res.send("hello")
 })
 app.use("/users",userRouter)
+app.use("/tour",tourRouter)
+
 
 const MONGODB_URL="mongodb+srv://chandan:Chandan123@cluster0.bzg0nzi.mongodb.net/tour_db?retryWrites=true&w=majority"
 
