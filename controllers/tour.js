@@ -42,11 +42,14 @@ export const getTour=async(req,res)=>{
 }
 
 export const getTourByUser = async(req,res)=>{
-    const {is}=req.params;
+    const {id}=req.params;
     if(mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({message: "user does't exist"})
+        const userTours=await TourModal.find({creator:id})
+        res.status(200).json(userTours)
+    }
+    else{
+        res.status(404).json({message:"user doesn't exist"})
     }
 
-    const userTours=await TourModal.find({creator:id})
-    res.status(200).json(userTours)
+    
 }
