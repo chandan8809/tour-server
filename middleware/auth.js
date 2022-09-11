@@ -20,7 +20,7 @@ const auth = async(req,res,next)=>{
         next()
 
     }catch(error){
-        console.log(erro)
+        console.log(error)
     }
 }
 

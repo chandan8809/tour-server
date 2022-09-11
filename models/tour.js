@@ -10,8 +10,8 @@ const tourSchema =mongoose.Schema({
         type:Date,
         default:new Date()
     },
-    likeCount:{
-        type:Number,
+    likes:{
+        type:[String],
         default:0
 
     },
