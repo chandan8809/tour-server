@@ -12,7 +12,7 @@ const tourSchema =mongoose.Schema({
     },
     likes:{
         type:[String],
-        default:0
+        default:[]
 
     },
 })

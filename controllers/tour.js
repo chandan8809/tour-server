@@ -146,16 +146,18 @@ export const likeTour = async(req,res)=>{
     const {id}=req.params;
     try{
       if(!req.userId){
-        return res.json({message: "user is not logged in"})
+        return res.json({message: "user is not authenticated"})
       }
       if(!mongoose.Types.ObjectId.isValid(id)){
         return  res.status(404).json({message:`no tour exist with this id:${id}`})
       }
       const tour= await  TourModal.findById(id)
+   
       const index =tour.likes.findIndex((id)=>id===String(req.userId));
+     
 
       if(index === -1){
-        tour.likes.push(String(req.userId))
+        tour.likes.push(req.userId)
       }else{
         tour.likes=tour.likes.filter((id)=> id!==String(req.userId));
       }
